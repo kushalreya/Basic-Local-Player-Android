@@ -3,6 +3,7 @@ package sc.android.basiclocalplayerpractice.player
 import android.content.Context
 import android.net.Uri
 import android.util.Log
+import androidx.compose.material3.FabPosition
 import androidx.core.net.toUri
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
@@ -63,5 +64,20 @@ class MusicPlayerController(
         if(player.isPlaying) player.pause()
         else player.play()
         Log.d("Player","isPlaying: ${player.isPlaying}")
+    }
+
+    //current position of the music being played
+    fun getCurrentPosition(): Long{
+        return player.currentPosition
+    }
+
+    //total duration of the music being played
+    fun getDuration() : Long{
+        return player.duration
+    }
+
+    //move to sought position
+    fun seekTo(position: Long){
+        player.seekTo(position)
     }
 }

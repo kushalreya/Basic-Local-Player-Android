@@ -11,6 +11,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import sc.android.basiclocalplayerpractice.model.MusicUIState
 import sc.android.basiclocalplayerpractice.player.MusicPlayerController
 import sc.android.basiclocalplayerpractice.view.components.PlaybackControlsSection
+import sc.android.basiclocalplayerpractice.view.components.SeekbarSection
 import sc.android.basiclocalplayerpractice.viewmodel.MusicViewModel
 
 @Composable
@@ -26,6 +27,15 @@ fun MusicPlayerScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        SeekbarSection(
+            uiState=uiState,
+            onSeek = {
+                position ->
+                viewModel.seekTo(position)
+            }
+        )
+
         PlaybackControlsSection(
             uiState = uiState,
             onPlayPauseClick={viewModel.togglePlayPause()}

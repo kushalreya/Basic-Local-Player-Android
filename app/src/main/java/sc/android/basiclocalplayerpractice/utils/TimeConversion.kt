@@ -1,7 +1,7 @@
 package sc.android.basiclocalplayerpractice.utils
 
 fun timeConversion(ms: Long): String{
-    val totalSeconds = ms/100
+    val totalSeconds = ms/1000
     val minutes = totalSeconds / 60
     val seconds = totalSeconds % 60
 
