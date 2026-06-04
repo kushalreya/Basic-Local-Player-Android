@@ -1,5 +1,7 @@
 package sc.android.basiclocalplayerpractice.utils
 
 enum class RepeatModes {
-    OFF, ONE, ALL
+    OFF, // no repeat
+    ONE, //particular song repeats
+    ALL //full playlist repeats
 }

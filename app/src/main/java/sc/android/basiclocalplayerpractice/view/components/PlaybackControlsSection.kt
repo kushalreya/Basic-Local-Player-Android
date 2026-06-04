@@ -17,20 +17,29 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import sc.android.basiclocalplayerpractice.model.MusicUIState
+import sc.android.basiclocalplayerpractice.player.MusicPlayerController
 import sc.android.basiclocalplayerpractice.utils.RepeatModes
 
 @Composable
 fun PlaybackControlsSection(
-    uiState: MusicUIState
+    uiState: MusicUIState,
+    playerController: MusicPlayerController
 ){
 
+    //extracting play-pause button
     val playPauseIcon =
-        if(uiState.isPlaying) Icons.Default.Pause
+        if(playerController.isPlaying()) Icons.Default.Pause
         else Icons.Default.PlayArrow
+
+    //todo remove
+    LaunchedEffect(Unit) {
+        playerController.loadSong()
+    }
 
     Row(
         modifier = Modifier
@@ -84,7 +93,11 @@ fun PlaybackControlsSection(
 
             //play pause
             IconButton(
-                onClick = {}
+                onClick = {
+                    //todo play-pause
+                    //todo remove (for testing)
+                    playerController.togglePlayPause()
+                }
             ){
                 Icon(
                     imageVector = playPauseIcon,
