@@ -28,18 +28,13 @@ import sc.android.basiclocalplayerpractice.utils.RepeatModes
 @Composable
 fun PlaybackControlsSection(
     uiState: MusicUIState,
-    playerController: MusicPlayerController
+    onPlayPauseClick: () -> Unit
 ){
 
     //extracting play-pause button
     val playPauseIcon =
-        if(playerController.isPlaying()) Icons.Default.Pause
+        if(uiState.isPlaying) Icons.Default.Pause
         else Icons.Default.PlayArrow
-
-    //todo remove
-    LaunchedEffect(Unit) {
-        playerController.loadSong()
-    }
 
     Row(
         modifier = Modifier
@@ -94,9 +89,7 @@ fun PlaybackControlsSection(
             //play pause
             IconButton(
                 onClick = {
-                    //todo play-pause
-                    //todo remove (for testing)
-                    playerController.togglePlayPause()
+                    onPlayPauseClick()
                 }
             ){
                 Icon(

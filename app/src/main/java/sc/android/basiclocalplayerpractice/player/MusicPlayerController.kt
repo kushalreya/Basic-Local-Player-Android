@@ -14,11 +14,14 @@ class MusicPlayerController(
 ){
     private val player = ExoPlayer.Builder(context).build()
 
+    var onPlayingStateChanged : ((Boolean) -> Unit)?=null
+
     init {
         player.addListener(
             object : Player.Listener{
                 override fun onIsPlayingChanged(isPlaying: Boolean) {
-                    Log.d("Player","Player state changed: $isPlaying")
+                    //Log.d("Player","Player state changed: $isPlaying")
+                    onPlayingStateChanged?.invoke(isPlaying)
                 }
             }
         )
