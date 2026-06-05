@@ -55,7 +55,7 @@ fun PlaybackControlsSection(
                 onClick = {
                     //todo repeat
                 },
-                modifier = Modifier.size(35.dp)
+                modifier = Modifier.size(40.dp)
             ) {
                 Icon(
                     imageVector =
@@ -78,7 +78,7 @@ fun PlaybackControlsSection(
             //previous track button
             IconButton(
                 onClick = {},
-                modifier = Modifier.size(50.dp)
+                modifier = Modifier.size(60.dp)
             ){
                 Icon(
                     Icons.Default.SkipPrevious,
@@ -93,7 +93,7 @@ fun PlaybackControlsSection(
                 onClick = {
                     onPlayPauseClick()
                 },
-                modifier = Modifier.size(50.dp)
+                modifier = Modifier.size(60.dp)
             ){
                 Icon(
                     imageVector = playPauseIcon,
@@ -108,7 +108,7 @@ fun PlaybackControlsSection(
                 onClick = {
                     //todo
                 },
-                modifier = Modifier.size(50.dp)
+                modifier = Modifier.size(60.dp)
             ){
                 Icon(
                     Icons.Default.SkipNext,
@@ -123,7 +123,7 @@ fun PlaybackControlsSection(
                 onClick = {
                     //todo
                 },
-                modifier = Modifier.size(35.dp)
+                modifier = Modifier.size(40.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Shuffle,

@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import sc.android.basiclocalplayerpractice.model.MusicUIState
 import sc.android.basiclocalplayerpractice.player.MusicPlayerController
+import sc.android.basiclocalplayerpractice.view.components.AlbumArtSelection
 import sc.android.basiclocalplayerpractice.view.components.MusicInfoSection
 import sc.android.basiclocalplayerpractice.view.components.PlaybackControlsSection
 import sc.android.basiclocalplayerpractice.view.components.SeekbarSection
@@ -28,6 +29,9 @@ fun MusicPlayerScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        AlbumArtSelection(uiState)
+
 
         MusicInfoSection(
             uiState = uiState

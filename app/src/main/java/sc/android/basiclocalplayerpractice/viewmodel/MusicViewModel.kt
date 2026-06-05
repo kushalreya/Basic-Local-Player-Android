@@ -43,6 +43,15 @@ class MusicViewModel(
             )
         }
 
+        //what to do when music album art has changed
+        playerController.onAlbumArtChanged={
+            bitmap->
+            //copying album art from player listener into UIState
+            _uiState.value=_uiState.value.copy(
+                albumArt=bitmap
+            )
+        }
+
         //loads the available song
         playerController.loadSong()
 
