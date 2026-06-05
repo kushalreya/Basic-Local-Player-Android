@@ -29,7 +29,7 @@ class MusicRepository(
         val cursor = context.contentResolver.query(
             audioCollection, //which table (address)
             projection,           //which columns/attributes needed
-            null,      //no filtering(provided everything
+            null,      //no filtering(provided everything)
             null,  //no arguments for filter since no filtering
             null      //no sorting order
         ) //creates a cursor (like a pointer) that is positioned above the first row and knows about all the rows, and it gradually moves to the next rows for reading the values
