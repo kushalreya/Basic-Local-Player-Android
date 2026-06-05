@@ -20,7 +20,8 @@ import sc.android.basiclocalplayerpractice.model.MusicUIState
 @Composable
 fun MusicInfoSection(uiState: MusicUIState){
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier
+            .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalArrangement = Arrangement.Center
     ) {
         Text(
