@@ -11,7 +11,7 @@ A modern Android music player built with **Kotlin**, **Jetpack Compose**, **MVVM
 - [🛠 Tech Stack](#-tech-stack)
 - [🏗 Architecture](#-architecture)
 - [🔄 App Flow](#-app-flow)
-- [📸 Screenshots](#-screenshots--demo)
+- [📸 Screenshots](#-screenshots)
 - [🌐 API Integration](#-api-integration)
 - [📂 Project Structure](#-project-structure)
 - [🎯 Use Cases](#-use-cases)
@@ -213,7 +213,12 @@ flowchart LR
     <img src="images/FavouritePlaylist_dark_theme.png" height=500>
 </p>
 
-## Empty State
+## Permission Launcher and Without Permission
+
+<p>
+    <img src="images/PermissionLauncher.png" height=500>
+    <img src="images/WithoutPermission.png" height=500>
+</p>
 
 ---
 
