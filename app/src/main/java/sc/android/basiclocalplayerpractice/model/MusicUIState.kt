@@ -1,25 +1,33 @@
 package sc.android.basiclocalplayerpractice.model
 
-import android.graphics.Bitmap
+import sc.android.basiclocalplayerpractice.utils.PlaylistMode
 import sc.android.basiclocalplayerpractice.utils.RepeatModes
-import kotlin.time.Duration
 
+//playback state -> dynamic
 data class MusicUIState(
-    //music info
-    val isPlaying: Boolean=false,
-    val currentPosition: Long= 0L,
-    val duration: Long=0L,
 
-    //music metadata
-    val songTitle: String="",
-    val artistName: String="",
-    val albumName: String="",
-    val albumArt: Bitmap?= null,
+    //music info
+    val isPlaying : Boolean = false,
+    val currentPosition : Long = 0L,
+    val duration : Long = 0L,
+
+    //point which song is playing
+    val currentSong: SongData? = null,
 
     //playback modes
-    val repeatModes: RepeatModes = RepeatModes.OFF,
-    val shuffleMode: Boolean=false,
+    val repeatMode: RepeatModes = RepeatModes.OFF,
+    val shuffleMode : Boolean = false,
 
-    //list of songs
-    val songs: List<SongData> = emptyList()
-)
+    //list of all songs
+    val songs : List<SongData> = emptyList(),
+
+    //list of favorite songs
+    val favoriteSongIds: Set<Long> = emptySet(),
+
+    //playlist type
+    val playlistMode: PlaylistMode = PlaylistMode.ALL,
+
+    //check is audio permission is available
+    val hasAudioPermission: Boolean = true,
+
+    )

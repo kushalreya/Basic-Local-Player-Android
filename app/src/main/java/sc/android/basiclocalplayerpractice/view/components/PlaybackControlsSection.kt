@@ -1,48 +1,43 @@
 package sc.android.basiclocalplayerpractice.view.components
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Pause
-import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.material.icons.filled.Repeat
-import androidx.compose.material.icons.filled.RepeatOne
-import androidx.compose.material.icons.filled.Shuffle
-import androidx.compose.material.icons.filled.SkipNext
-import androidx.compose.material.icons.filled.SkipPrevious
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import sc.android.basiclocalplayerpractice.model.MusicUIState
-import sc.android.basiclocalplayerpractice.player.MusicPlayerController
 import sc.android.basiclocalplayerpractice.utils.RepeatModes
 
 @Composable
 fun PlaybackControlsSection(
     uiState: MusicUIState,
-    onPlayPauseClick: () -> Unit
-){
+    onPlayPauseClick : () -> Unit,
+    onNextClick : () -> Unit,
+    onPreviousClick : () -> Unit,
+    onRepeatClick : () -> Unit,
+    onShuffleClick : () -> Unit
+) {
 
     //extracting play-pause button
     val playPauseIcon =
-        if(uiState.isPlaying) Icons.Default.Pause
+        if (uiState.isPlaying) Icons.Default.Pause
         else Icons.Default.PlayArrow
+
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp),
+            .padding(8.dp)
+            .padding(vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
-    ){
+    ) {
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -50,26 +45,25 @@ fun PlaybackControlsSection(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            //repeat
+
+            //repeat mode button
             IconButton(
-                onClick = {
-                    //todo repeat
-                },
+                onClick = onRepeatClick,
                 modifier = Modifier.size(40.dp)
             ) {
                 Icon(
                     imageVector =
-                        when (uiState.repeatModes) {
+                        when (uiState.repeatMode) {
                             RepeatModes.OFF -> Icons.Default.Repeat
                             RepeatModes.ONE -> Icons.Default.RepeatOne
                             RepeatModes.ALL -> Icons.Default.Repeat
                         },
-                    "repeat mode",
+                    contentDescription = "repeat mode",
                     tint =
-                        when (uiState.repeatModes) {
+                        when (uiState.repeatMode) {
                             RepeatModes.OFF -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
                             RepeatModes.ONE -> MaterialTheme.colorScheme.onSurface
-                            RepeatModes.ALL -> MaterialTheme.colorScheme.primary
+                            RepeatModes.ALL -> MaterialTheme.colorScheme.onSurface
                         },
                     modifier = Modifier.size(35.dp)
                 )
@@ -77,64 +71,60 @@ fun PlaybackControlsSection(
 
             //previous track button
             IconButton(
-                onClick = {},
+                onClick = onPreviousClick,
                 modifier = Modifier.size(60.dp)
-            ){
+            ) {
                 Icon(
-                    Icons.Default.SkipPrevious,
-                    "previous",
+                    imageVector = Icons.Default.SkipPrevious,
+                    contentDescription = "previous",
                     tint = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.size(50.dp)
                 )
             }
 
-            //play pause
+            //play-pause button
             IconButton(
-                onClick = {
-                    onPlayPauseClick()
-                },
+                onClick = onPlayPauseClick,
                 modifier = Modifier.size(60.dp)
-            ){
+            ) {
                 Icon(
                     imageVector = playPauseIcon,
-                    contentDescription = "play pause",
+                    contentDescription = "play-pause",
                     tint = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.size(50.dp)
                 )
             }
 
-            //next track
+            //next track button
             IconButton(
-                onClick = {
-                    //todo
-                },
+                onClick = onNextClick,
                 modifier = Modifier.size(60.dp)
-            ){
+            ) {
                 Icon(
-                    Icons.Default.SkipNext,
-                    "next",
+                    imageVector = Icons.Default.SkipNext,
+                    contentDescription = "next",
                     tint = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier.size(50.dp)
                 )
             }
 
-            //shuffle mode
+            //shuffle mode button
             IconButton(
-                onClick = {
-                    //todo
-                },
+                onClick = onShuffleClick,
                 modifier = Modifier.size(40.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Shuffle,
                     contentDescription = "shuffle mode",
                     tint =
-                        if (!uiState.shuffleMode) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
-                        else MaterialTheme.colorScheme.onSurface,
+                        if (uiState.shuffleMode) MaterialTheme.colorScheme.onSurface
+                        else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
                     modifier = Modifier.size(35.dp)
                 )
             }
+
         }
 
     }
+
 }

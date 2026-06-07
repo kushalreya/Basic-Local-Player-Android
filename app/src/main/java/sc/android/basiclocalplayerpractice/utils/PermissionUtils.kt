@@ -6,7 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.content.ContextCompat
 
-fun checkPermission(context: Context) : Boolean {
+fun hasAudioPermission(context: Context) : Boolean {
 
     //checking if android version is 13 or newer (Tiramisu is Android 13)
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
